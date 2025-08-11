@@ -1,7 +1,11 @@
+# netlify.toml
 [build]
-  command = "bun install && bun run build"
+  # bun install করে তারপর lightningcss রিবিল্ড করে (যদি দরকারে) এবং শেষে build চালাবে
+  # '|| true' রাখলে যদি rebuild কমান্ড অনর্ক্ষিতভাবে fail করে তবুও build step চালাবে,
+  # কিন্তু এটা কেবল debug-এর জন্য; production-এ সমস্যা থাকলে এখানে true সরিয়ে debug করো।
+  command = "bun install && bun rebuild lightningcss || true && bun run build"
   publish = "dist"
-
 
 [build.environment]
   BUN_VERSION = "1.1.30"
+  NODE_ENV = "production"

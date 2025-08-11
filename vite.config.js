@@ -4,11 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  build: {
-    rollupOptions: {
-      // lightningcss কে external করলাম যাতে bundle এর সময় load না হয়
-      external: ['lightningcss']
-    }
-  }
+  plugins: [
+    react(),
+    tailwindcss()
+  ]
 })
